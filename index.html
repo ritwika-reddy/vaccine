@@ -43,7 +43,7 @@
 // 	var thefts = $.getJSON("https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson");
 // 	console.log(thefts);
 	var thefts;
-	$.get("https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson", function(text) {
+	$.getJSON("https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson", function(text) {
   		thefts = text;
 	});
 	console.log(thefts);
