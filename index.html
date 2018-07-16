@@ -40,6 +40,7 @@
 	var map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
 	
 	var thefts = $.getJSON("bicycle_thefts_Part1.geojson");
+	thefts = thefts.features; 
 
 	var geojsonMarkerOptions = {
     	    radius: 8,
