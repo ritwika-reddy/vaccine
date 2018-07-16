@@ -57,7 +57,7 @@
 		}	
 	}
 		
-	L.geoJSON(thefts, {
+	var layer = L.geoJSON(thefts, {
 		style: function (feature) {
 			return feature.properties;	
 		},
@@ -70,14 +70,7 @@
 	
 	}).addTo(map);
 		
-	var bounds = map.getBounds(); 
-	map.data.forEach(function(feature){
-	  feature.getGeometry().forEachLatLng(function(latlng){
-	     bounds.extend(latlng);
-	  });
-	});
-
-	map.fitBounds(bounds);
+	map.fitBounds(layer.getBounds());
 		
 	var markers = L.markerClusterGroup();
 
