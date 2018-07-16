@@ -41,8 +41,9 @@
 	var map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
 	
 	var thefts = $.getJSON("https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson");
+	console.log(thefts);
 	thefts = thefts.features; 
-
+	console.log(thefts);
 	var geojsonMarkerOptions = {
     	    radius: 8,
 	    fillColor: "#ff7800",
