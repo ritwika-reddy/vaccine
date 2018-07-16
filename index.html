@@ -40,10 +40,14 @@
 
 	var map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
 	
-	var thefts = $.getJSON("https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson");
+// 	var thefts = $.getJSON("https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson");
+// 	console.log(thefts);
+	var thefts;
+	$.get("https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson", function(text) {
+  		thefts = text;
+	});
 	console.log(thefts);
-	console.log(thefts.responseText);
-	thefts = JSON.parse(thefts.responseText); 
+	thefts = JSON.parse(thefts); 
 // 	thefts = thefts.features; 
 	console.log(thefts);
 	var geojsonMarkerOptions = {
