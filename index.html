@@ -11,8 +11,6 @@
 	<link rel="stylesheet" href="leaf/dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="leaf/dist/MarkerCluster.Default.css" />
 	<script src="leaf/dist/leaflet.markercluster-src.js"></script>
-	<!script src="leaf/example/realworld.388.js"><!/script>
-    	<!script src="bicycle_thefts_Part1.geojson"><!/script>
     <style>
 		html, body {
 			height: 100%;
@@ -30,52 +28,6 @@
 	<div id="map"></div>
 	<span>Mouse over a cluster to see the bounds of its children and click a cluster to zoom to those bounds</span>
 	<script type="text/javascript">
-  	/*
-	var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 18,
-		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
-	}),
-// 	latlng = L.latLng(-37.82, 175.24);
-	latlng = L.latLng(0, 0);
-	var map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
-	
-// 	var thefts = $.getJSON("https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson");
-// 	console.log(thefts);
-	var thefts = $.ajax({type: "GET", url: "https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson", async: false}).responseText;
-// 	thefts = $.get("https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson");
-	console.log(thefts);
-	thefts = JSON.parse(thefts); 
-	console.log(thefts);
-	thefts = thefts.features; 
-	console.log(thefts);
-	var geojsonMarkerOptions = {
-    	radius: 6,
-	    fillColor: "#ff7800",
-	    color: "#000",
-	    weight: 1,
-	    opacity: 1,
-	    fillOpacity: 0.8
-	};
-		function onEachFeature(feature, layer) {
-	    // does this feature have a property named popupContent?
-	    if (feature.properties && feature.properties.STOLEN_VAL) {
-		layer.bindPopup(feature.properties.STOLEN_VAL.toString());
-	    }
-	}
-	var layer = L.geoJSON(thefts, {
-		style: function (feature) {
-			return feature.properties;	
-		},
-		
-		pointToLayer: function (feature, latlng) {
-			return L.circleMarker(latlng, geojsonMarkerOptions);		
-		},
-		
-		onEachFeature: onEachFeature
-	
-	}).addTo(map);
-	map.fitBounds(layer.getBounds());
-*/
 	var thefts = $.ajax({type: "GET", url: "https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson", async: false}).responseText;
 	console.log(thefts);
 	thefts = JSON.parse(thefts); 
@@ -90,7 +42,7 @@
 			}),
 			latlng = L.latLng(0, 0);
 
-    var map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
+        var map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
 
     
 		var markers = L.markerClusterGroup();
@@ -103,11 +55,8 @@
 			markers.addLayer(marker);
 		}
       
-	map.addLayer(markers);
-
-	
-	map.fitBounds(markers.getBounds());
-	
+    	map.addLayer(markers);
+    	map.fitBounds(markers.getBounds());
 	
 	</script>
 </body>
