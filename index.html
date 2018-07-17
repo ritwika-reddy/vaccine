@@ -31,7 +31,7 @@
 	<div id="map"></div>
 	<span>Mouse over a cluster to see the bounds of its children and click a cluster to zoom to those bounds</span>
 	<script type="text/javascript">
-  	
+  	/*
 	var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 18,
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
@@ -57,8 +57,7 @@
 	    opacity: 1,
 	    fillOpacity: 0.8
 	};
-	
-	function onEachFeature(feature, layer) {
+		function onEachFeature(feature, layer) {
 	    // does this feature have a property named popupContent?
 	    if (feature.properties && feature.properties.STOLEN_VAL) {
 		layer.bindPopup(feature.properties.STOLEN_VAL.toString());
@@ -76,8 +75,36 @@
 		onEachFeature: onEachFeature
 	
 	}).addTo(map);
-	
 	map.fitBounds(layer.getBounds());
+*/
+	var thefts = $.ajax({type: "GET", url: "https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/   bicycle_thefts_Part1.geojson", async: false}).responseText;
+	console.log(thefts);
+	thefts = JSON.parse(thefts); 
+	console.log(thefts);
+	thefts = thefts.features; 
+	console.log(thefts);
+	
+	var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 18,
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+			}), latlng = L.latLng(-37.82, 175.24);
+
+		var map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
+
+		var markers = L.markerClusterGroup();
+		
+		for (var i = 0; i < thefts.length; i++) {
+			var a = thefts[i].geometry.coordinates;
+			var title = thefts[i].properties.STOLEN_VAL.toString();
+			var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title });
+			marker.bindPopup(title);
+			markers.addLayer(marker);
+		}
+
+	map.addLayer(markers);
+
+	
+	map.fitBounds(markers.getBounds());
 	
 	
 	</script>
