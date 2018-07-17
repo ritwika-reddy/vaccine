@@ -92,12 +92,12 @@
 
     var map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
 */
-        map = new google.maps.Map(document.getElementById('map')); 
-        map.setZoom(13);      // This will trigger a zoom_changed on the map
-        map.setCenter(new google.maps.LatLng(37.4419, -122.1419));
-        map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+    var map = L.map('map').setView([51.505, -0.09], 13);
 
-		
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
 		var markers = L.markerClusterGroup();
 		
 		for (var i = 0; i < thefts.length; i++) {
