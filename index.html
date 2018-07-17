@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="leaf/example/screen.css" />
-	<script src="https://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
 	<link rel="stylesheet" href="leaf/dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="leaf/dist/MarkerCluster.Default.css" />
 	<script src="leaf/dist/leaflet.markercluster-src.js"></script>
@@ -84,15 +84,21 @@
 	thefts = thefts.features; 
 	console.log(thefts);
 	
-	
+/*	
 		var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				maxZoom: 18,
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
 			}),
 			latlng = L.latLng(-70, 50);
 
-		var map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
+    var map = L.map('map', {center: latlng, zoom: 13, layers: [tiles]});
+*/
+        map = new google.maps.Map(document.getElementById('map')); 
+        map.setZoom(13);      // This will trigger a zoom_changed on the map
+        map.setCenter(new google.maps.LatLng(37.4419, -122.1419));
+        map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
+		
 		var markers = L.markerClusterGroup();
 		
 		for (var i = 0; i < thefts.length; i++) {
