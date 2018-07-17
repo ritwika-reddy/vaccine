@@ -77,7 +77,7 @@
 	}).addTo(map);
 	map.fitBounds(layer.getBounds());
 */
-	var thefts = $.ajax({type: "GET", url: "https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/   bicycle_thefts_Part1.geojson", async: false}).responseText;
+	var thefts = $.ajax({type: "GET", url: "https://raw.githubusercontent.com/CityOfPhiladelphia/phl-open-geodata/master/bicycle_thefts/bicycle_thefts_Part1.geojson", async: false}).responseText;
 	console.log(thefts);
 	thefts = JSON.parse(thefts); 
 	console.log(thefts);
