@@ -103,7 +103,7 @@
 		for (var i = 0; i < thefts.length; i++) {
 			var a = thefts[i].geometry.coordinates;
 			var title = thefts[i].properties.STOLEN_VAL.toString();
-			var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title });
+			var marker = L.marker(new L.LatLng(a[1], a[0]), { title: title });
 			marker.bindPopup(title);
 			markers.addLayer(marker);
 		}
